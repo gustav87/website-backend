@@ -349,7 +349,7 @@ namespace W3C.Domain.MatchmakingService
         private async Task HandleMMError(HttpResponseMessage response)
         {
             var errorReponse = await GetResult<ErrorResponse>(response);
-            var errors = errorReponse.Errors.Select(x => $"{x.Param} {x.Message}");
+            var errors = errorReponse.Errors.Select(x => $"{x.Path} {x.Message}");
             throw new HttpRequestException(string.Join(",", errors), null, response.StatusCode);
         }
 
